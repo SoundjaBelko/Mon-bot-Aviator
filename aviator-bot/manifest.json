@@ -1,0 +1,46 @@
+{
+  "manifest_version": 3,
+  "name": "MANSSA WIN",
+  "version": "1.0.0",
+  "description": "Bot Aviator intelligent avec stratégies automatiques",
+
+  "action": {
+    "default_popup": "auth/login.html"
+  },
+
+  "permissions": [
+    "storage",
+    "scripting",
+    "tabs",
+    "alarms",
+    "webNavigation",
+    "webRequest"
+  ],
+
+  "host_permissions": [
+    "https://1win.com.ci/*"
+  ],
+
+  "background": {
+    "service_worker": "background.js"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["https://1win.com.ci/aviator*"],
+      "js": ["content/bot-core.js"],
+      "run_at": "document_idle"
+    }
+  ],
+
+  "web_accessible_resources": [
+    {
+      "resources": ["content/bot-core.js"],
+      "matches": ["https://1win.com.ci/*"]
+    }
+  ],
+
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self';"
+  }
+}

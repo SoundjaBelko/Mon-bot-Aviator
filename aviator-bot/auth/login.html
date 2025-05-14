@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Connexion - MANSSA WIN</title>
+  <style>
+    body {
+      width: 300px; padding: 20px; font-family: Arial;
+      background: #1a1a2e; color: white;
+    }
+    .login-box {
+      display: flex; flex-direction: column; gap: 15px;
+    }
+    input, button {
+      padding: 10px; border-radius: 5px; border: none;
+    }
+    button {
+      background: #6c5ce7; color: white; cursor: pointer;
+    }
+    a {
+      color: #74b9ff; text-align: center; font-size: 14px; text-decoration: none;
+    }
+    #login-error {
+      color: red;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <form id="login-form" class="login-box">
+    <h2>CONNEXION</h2>
+    <input type="text" id="username" placeholder="Nom d'utilisateur" required>
+    <input type="password" id="password" placeholder="Mot de passe" required>
+    <button type="submit">SE CONNECTER</button>
+    <p id="login-error"></p>
+    <a href="register.html">Créer un compte</a>
+  </form>
+
+  <script>
+    document.getElementById('login-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value.trim();
+      const errorMsg = document.getElementById('login-error');
+
+      chrome.storage.local.get(["users"], function(data) {
+        const users = data.users || [];
+
+        const userFound = users.find(u => u.username === username && u.password === password);
+
+        if (userFound) {
+          chrome.storage.local.set({
+            isLoggedIn: true,
+            currentUser: username
+          }, function() {
+            if (chrome.runtime.lastError) {
+              errorMsg.textContent = "Erreur interne. Réessayez.";
+            } else {
+              window.location.href = "../popup/index.html";
+            }
+          });
+        } else {
+          errorMsg.textContent = "Nom d'utilisateur ou mot de passe incorrect.";
+        }
+      });
+    });
+  </script>
+</body>
+</html>
