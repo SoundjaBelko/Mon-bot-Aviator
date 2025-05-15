@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Options du Bot Aviator</title>
+  <link rel="stylesheet" href="options.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Paramètres du Bot Aviator</h1>
+
+    <div class="form-group">
+      <label for="strategy">Choisissez votre stratégie :</label>
+      <select id="strategy">
+        <option value="fast">💨 Retrait rapide</option>
+        <option value="moderate">⚖️ Retrait moyen</option>
+        <option value="long">🧱 Retrait à long terme</option>
+      </select>
+    </div>
+
+    <button id="save-btn">💾 Sauvegarder</button>
+    <p id="status"></p>
+  </div>
+
+  <script>
+    // Charger la stratégie actuelle
+    document.addEventListener('DOMContentLoaded', () => {
+      chrome.storage.sync.get(['strategy'], (data) => {
+        const strategy = data.strategy || 'moderate';
+        document.getElementById('strategy').value = strategy;
+      });
+    });
+
+    // Sauvegarder la stratégie sélectionnée
+    document.getElementById('save-btn').addEventListener('click', () => {
+      const strategy = document.getElementById('strategy').value;
+      chrome.storage.sync.set({ strategy: strategy }, () => {
+        const status = document.getElementById('status');
+        status.textContent = '✅ Stratégie sauvegardée !';
+        status.style.color = '#2ecc71';
+        setTimeout(() => {
+          status.textContent = '';
+        }, 2000);
+      });
+    });
+  </script>
+</body>
+</html>

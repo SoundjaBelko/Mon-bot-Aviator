@@ -1,0 +1,12 @@
+{
+  "name": "aviator-bot",
+  "version": "1.0.0",
+  "description": "Bot Aviator automatique pour Render",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Toi 😉",
+  "license": "MIT",
+  "dependencies": {}
+}

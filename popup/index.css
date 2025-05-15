@@ -1,0 +1,129 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 15px;
+  background-color: #f0f4f8;
+  width: 320px;
+}
+
+h1 {
+  text-align: center;
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #2c3e50;
+}
+
+.bot-status {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.status-indicator {
+  width: 12px;
+  height: 12px;
+  background-color: #d63031;
+  border-radius: 50%;
+  margin-left: 8px;
+  box-shadow: 0 0 5px #d63031;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.stat {
+  flex: 1;
+  text-align: center;
+  font-weight: bold;
+  color: #2d3436;
+}
+
+.progress-container {
+  margin: 10px 0;
+  height: 16px;
+  background-color: #dfe6e9;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: #00b894;
+  width: 0%;
+  transition: width 0.4s ease;
+}
+
+.progress-text {
+  text-align: center;
+  margin-top: 5px;
+  font-size: 13px;
+  color: #2d3436;
+}
+
+#toggle-bot {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  font-size: 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin: 10px 0;
+}
+
+.btn-start {
+  background-color: #0984e3;
+  color: white;
+}
+
+.btn-start:hover {
+  background-color: #74b9ff;
+}
+
+.btn-stop {
+  background-color: #d63031;
+  color: white;
+}
+
+.btn-stop:hover {
+  background-color: #ff7675;
+}
+
+.history {
+  margin-top: 15px;
+}
+
+.history-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  border-bottom: 1px solid #dcdde1;
+  font-size: 13px;
+}
+
+.positive {
+  color: #00b894;
+}
+
+.negative {
+  color: #d63031;
+}
+
+#options-btn {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  margin-top: 15px;
+  background-color: #636e72;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+#options-btn:hover {
+  background-color: #b2bec3;
+}
